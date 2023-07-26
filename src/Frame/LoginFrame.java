@@ -2,6 +2,8 @@ package Frame;
 
 
 import javax.swing.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class LoginFrame extends JFrame {
 
@@ -45,6 +47,13 @@ public class LoginFrame extends JFrame {
         registerButton.setBounds(220, 160, 100, 25);
         add(registerButton);
 
+
+        registerButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                new RegisterFrame().setVisible(true);
+            }
+        });
     }
 
 }
