@@ -3,21 +3,18 @@ package Frame;
 import javax.swing.*;
 
 public class RegisterFrame extends JFrame {
-
     private JLabel loginLabel;
     private JLabel passwdLabel;
     private JTextField loginField;
     private JPasswordField passwdField;
     private JButton registerButton;
 
-    public RegisterFrame(){
+    public RegisterFrame() {
+        initFrame();
+        initLabel();
+    }
 
-        setSize(300, 200);
-        setTitle("Î¢ÐÅÁãÇ®Í¨Lite");
-        setResizable(false);
-        setLocationRelativeTo(null);
-        setLayout(null);
-
+    private void initLabel() {
         loginLabel = new JLabel("Username:");
         loginLabel.setBounds(50, 30, 80, 25);
         add(loginLabel);
@@ -37,7 +34,14 @@ public class RegisterFrame extends JFrame {
         registerButton = new JButton("Register");
         registerButton.setBounds(100, 100, 100, 25);
         add(registerButton);
+    }
 
+    private void initFrame() {
+        setSize(300, 200);
+        setTitle("Çë×¢²á");
+        setResizable(false);
+        setLocationRelativeTo(null);
+        setLayout(null);
     }
 
 }

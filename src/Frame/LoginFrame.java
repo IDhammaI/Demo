@@ -1,6 +1,6 @@
 package Frame;
 
-
+import Service.CheckService;
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -15,14 +15,30 @@ public class LoginFrame extends JFrame {
     private JButton registerButton;
 
     public LoginFrame() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 300);
-        setTitle("微信零钱通Lite");
-        setResizable(false);
-        setLocationRelativeTo(null);
-        setLayout(null);
+        initFrame();
+        initLabel();
+        initListenner();
+    }
 
-        // 确定组件位置和大小
+    private void initListenner() {
+        registerButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                new RegisterFrame().setVisible(true);
+            }
+        });
+        loginButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                String Username = loginField.getText().trim();
+                String Password = passwdField.getText().trim();
+                CheckService.checkLogin(Username, Password);
+
+            }
+        });
+    }
+
+    private void initLabel() {
         loginLabel = new JLabel("Username");
         loginLabel.setBounds(50, 50, 80, 25);
         add(loginLabel);
@@ -46,14 +62,14 @@ public class LoginFrame extends JFrame {
         registerButton = new JButton("Register");
         registerButton.setBounds(220, 160, 100, 25);
         add(registerButton);
-
-
-        registerButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                new RegisterFrame().setVisible(true);
-            }
-        });
     }
 
+    private void initFrame() {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(400, 300);
+        setTitle("微信零钱通Lite-请登录");
+        setResizable(false);
+        setLocationRelativeTo(null);
+        setLayout(null);
+    }
 }
